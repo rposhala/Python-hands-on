@@ -1,0 +1,31 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE Colors (
+   color_id INTEGER PRIMARY KEY,
+   color  TEXT NOT NULL,
+   UNIQUE (color)
+);
+INSERT INTO Colors VALUES(1,'Red');
+INSERT INTO Colors VALUES(2,'Blue');
+INSERT INTO Colors VALUES(3,'Greener');
+INSERT INTO Colors VALUES(4,'Greene');
+COMMIT;
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE Cars (
+   car_id INTEGER PRIMARY KEY,
+   make_model_id INTEGER NOT NULL,
+   color_id INTEGER NOT NULL,
+   available INTEGER NOT NULL,
+   FOREIGN KEY(make_model_id) REFERENCES MakeModels(make_model_id),
+   FOREIGN KEY(color_id) REFERENCES Colors(color_id)
+);
+INSERT INTO Cars VALUES(7,2,3,1);
+INSERT INTO Cars VALUES(8,1,1,1);
+INSERT INTO Cars VALUES(9,2,1,1);
+INSERT INTO Cars VALUES(10,3,1,1);
+INSERT INTO Cars VALUES(11,1,2,0);
+INSERT INTO Cars VALUES(12,1,2,0);
+INSERT INTO Cars VALUES(13,3,2,0);
+INSERT INTO Cars VALUES(14,2,3,0);
+COMMIT;

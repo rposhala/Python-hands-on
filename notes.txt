@@ -1,0 +1,126 @@
+##TypeError: 'float' object is not callable --> is sometimes caused due lack of operator which would have switched the parenthesis into precedence operators
+
+
+for idx , ele in enumerate(x)
+
+anything after continue in a loop doesnot gets executed, it will iterate to next loop
+
+does infile.readline() pops first line of infile and returns ? yes
+
+map(lambda ele: ele*ele, my_list)
+ele*ele for ele in my_list
+yeild --- are just generators
+
+# # method 3 - use lambda with map
+# # map(lambda variables (comma separated): expression)
+
+# print(list(map(lambda ele: ele*ele, my_list)))
+
+Filter -- basically, combining conditional and lambda. Will return all expressions
+# # # that evaluate to True
+# # # filter(lambda variables (comma seperated): expression (that will evaluate to True or False/None), list))
+ex: print(list(filter(lambda year: year % 4 == 0, range(1970, 2000))))
+
+Can use min max and sort more efficiently with lambda functions.
+print(min(students, key=lambda student: len(student)))
+
+print(max(students, key=lambda student: len(student)))
+sorted(students, key=lambda student: student['username'], reverse=True)
+----
+# Modules are used to write functions and classes in a class and save them in a file
+# and then import the functions and classes from the file. 
+
+import my_funcs_classes
+
+print(my_funcs_classes.add(1,2))
+
+
+from my_funcs_classes import add
+
+print(add(3,42))
+--------- inbuilt functions
+def __str__(self):
+def __add__(self, another_circle):
+     return Circle(self.radius + another_circle.radius)
+def __gt__(self, another_circle):
+        return self.radius > another_circle.radius
+
+    def __lt__(self, another_circle):
+        return self.radius < another_circle.radius
+###print(c1 < c2) directes u to _lt_ function.
+------------------------ class and static methods
+    # @classmethod are bound to class rather than object. Therefore, to use them, you do not have
+    # to instantiate an object.
+    # NOTE: Unlike staticmethods, classmethods do have access to class properties (variables or methods).
+    # This means they can access class_variable.
+        @classmethod
+    def add(cls, number1, number2):
+        return number1 + number2 + cls.class_variable
+-- 
+   # @staticmethod are bound to class rather than object. Therefore, to use them, you do not have
+    # to instantiate an object.
+    # NOTE: staticmethods do no have access to class properties (variables or methods).
+    # This means they cannot access class_variable.
+    # Such methods are used when you do not want subclasses to change/overwrite a specific method.
+
+    @staticmethod
+    def add(number1, number2):
+        return number1 + number2 + class_variable # cnt take class variable
+--------
+class TestClass:
+    def add_object(self, number1, number2):
+        return number1 + number2 + self.class_variable + 29
+
+
+t1 = TestClass()
+
+TestClass.add_object(t1, 13, 14) = as same as = t1.add_object(13, 14)
+------------------------------
+to generate a database data randomly using randint and faker and storing it in a .tsv file
+
+from faker import Faker
+import random
+fake = Faker()
+import csv
+
+datafile = open('student.tsv', 'w')
+writer = csv.writer(datafile, delimiter='\t')
+
+for line in lines:
+    writer.writerow(line)
+
+------- to open and read a file
+with open(filename, 'r') as fp:
+        header=[]
+        line=[]
+        for l in fp:
+            if l.startswith('##'):
+
+---- save data as a json file : need to give the data which needs to be stored and filename to be stored
+def save_data_as_json(data, filename):
+    # YOUR CODE HERE
+    import json
+    with open(filename, 'w') as fp:
+        json.dump(data, fp, sort_keys=True, indent=4, separators=(',',': '))
+
+----loading the data from a json file : need to input the json filename from which data shud be taken
+def load_data_from_json(filename):
+    # YOUR CODE HERE
+    import json
+    with open(filename, 'r') as fp:
+        data = json.load(fp) # .load append to the data file constantly
+    return data
+------------------------------------------------------------
+
+del ex1.db --  deletes the database 
+sqlite3 ex1.db < ex1.sql --  creates a database and stores the data which is in the sql file.
+
+-------
+
+a = 'Variants'
+cur.execute('PRAGMA TABLE_INFO({})'.format(a))
+-------
+
+
+
+
